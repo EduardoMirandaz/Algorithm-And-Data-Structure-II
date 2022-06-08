@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/eduardo/Documentos/Codigos/C/Algoritmos e Estruturas de Dados II/Leitura e Escrita Arquivo Binario Com Arquivo de Indices'
+gcc -g Student.c Util.c FileHandler.c Index.c Main.c -o executavel
+make: Leaving directory '/home/eduardo/Documentos/Codigos/C/Algoritmos e Estruturas de Dados II/Leitura e Escrita Arquivo Binario Com Arquivo de Indices'
+ 
