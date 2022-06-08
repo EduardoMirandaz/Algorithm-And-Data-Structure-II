@@ -6,6 +6,7 @@
 #define COLUMN_3 3
 #define COLUMN_4 4
 
+
 #define BUFFER_MIN_SIZE 114 //name,max nusp,commas,max grade
 
 #define END_OF_LINE '\n'

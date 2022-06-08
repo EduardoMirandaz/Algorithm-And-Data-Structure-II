@@ -9,6 +9,7 @@
 
 #define BUFFER_MIN_SIZE 114 //name,max nusp,commas,max grade
 
+
 #define END_OF_LINE '\n'
 #define END_OF_STRING '\0'
 
