@@ -4,6 +4,8 @@
 #include "operations.h"
 #include "util.h"
 
+
+
 int main(){
     char archiveName[TAM];
     if(!scanf("%s", archiveName)) exit(1);
