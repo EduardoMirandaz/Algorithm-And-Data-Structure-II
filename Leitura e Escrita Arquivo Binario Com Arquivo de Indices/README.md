@@ -107,21 +107,3 @@ Course: Engenharia da computacao
 Test grade: 3.00
 -------------------------------
 ```
-# Obrigações
-Você `deve`:
-- Comentar o código.
-- Usar alocações dinâmicas.
-- As seguintes funções são obrigatórias: ftell, fseek e fread.
-- Salvar os dados em um arquivo binário e depois lê-lo.
-- Ler apenas o que será escrito na saída padrão.
-- Fechar o arquivo ao final
-
-# Dicas
-- Usem struct para organizar as informações do registro.
-- Modularizem o código em várias funções pequenas.
-- Deem nomes significativos para as variáveis
-- Após escreverem um registro utilizem o fflush para escrever o buffer, contido na struct FILE, para o disco.
-
-# Duvidas
-Mandem no grupo, por email, ou combinem um dia de atendimento comigo!
-Bom exercício. Se cuidem!!!
