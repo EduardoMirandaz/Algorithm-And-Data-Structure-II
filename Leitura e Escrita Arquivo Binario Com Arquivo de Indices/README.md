@@ -1,66 +1,127 @@
-sse exercício consiste na leitura de um arquivo binário e exibição de seu conteúdo na saída padrão.
+# Registros de Alunos com Busca por Índices Primários
+Esse exercício consiste na execução de opercações de inserção, busca e remoção LOGICA em índices primários
 
-Por que um arquivo binário? R: Observe abaixo duas possibilidades de representação de um número inteiro. A primeira consiste em uma cadeia de caracteres em texto puro ASCII, cada caractere consome 1 byte. A segunda, por sua vez, está no formato de um número inteiro 'int' na linguagem C, seu tamanho é 4 bytes em uma arquitetura X86 64 bits. O tamanho final em bytes está calculado após o número.
+Qual é a ideia?
+Ler os comandos da entrada padrão e executa-los sequencialemente. Os comandos são:
+- insert: Insere um registro no arquivo binário, a linha estará no formato csv
+- search: executa a busca de um registro por meio de sua chave primária
+- delete: remove um registro por meio de sua chave primária(Nada deve ser exibido)
+- exit: finaliza a execução
 
-"78765234" - 8 bytes
-78765234 - 4 bytes
-Organização interna do arquivo binário
-Cada registro dentro do arquivo contém os seguintes dados:
 
-Numero USP - int
-Nome completo - char[50]
-Curso - char[50]
-Nota - float
-Seguindo a ordem anterior os registros estão dispostos da seguinte forma: [[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]] Sendo assim, os registros são de tamanho fixo com campos de tamanho fixo. OBS: Os colchetes não existem no arquivo, serve apenas para demarcar onde começam e terminam os registros e os campos
+`O que é um CSV?`
+Um arquivo CSV(comma-separated-values) é um arquivo texto puro onde os campos de cada registro são separados por algum desses caracteres: vírgula, ponto e vírgula, pipe ou espaço. Os separadores mais comuns são vírgula e ponto e vírgula. Os campos de texto, em alguns casos, estão entre aspas simples ou duplas. Para o nosso caso não há aspas.
 
-Entradas do exercício
-Você receberá entradas diferentes para cada caso de teste, use a forma que achar melhor para lê-las. Todas virão pela entrada padrão. As dispostas abaixo nunca mudarão para qualquer operação.
+## Organização interna do arquivo binário
+Cada registro dentro do arquivo deverá estar estruturado da seguinte forma:
+- Numero USP      -    int
+- Nome            -    char[?]
+- Sobrenome       -    char[?]
+- Curso           -    char[?]
+- Nota            -    float
 
-1ª Entrada[string] - Nome do arquivo binário
-2ª Entrada[int] - Operação
-As operações são:
+Dê o tamanho que achar necessário para os campos CHAR
 
-1 - Exibição de todos os registros
-2 - Exibição de metade dos registros, do começo ao meio
-3 - Exibição de metade dos registros, do meio ao fim
-4 - Exibição de uma faixa de registros
-5 - Exibição de um registro específico
-Para a operação 4, após o número da operação, você deverá ler os valores:
+# Entradas do exercício
+```sh
+insert 1,Raymond,Adeline,Sistemas de informacao,2
+insert 2,Jeanne,Alice,Ciencia da computacao,6
+insert 3,Gregory,Alicia,Engenharia da computacao,0
+insert 4,Elizabeth,Alla,Sistemas de informacao,1
+insert 5,Carl,Alma,Ciencia da computacao,7
+search 1
+search 2
+search 3
+search 4
+search 5
+delete 1
+delete 2
+delete 3
+delete 4
+delete 5
+exit
+```
 
-3ª Entrada[int] - Início da faixa(inclusive)
-4ª Entrada[int] - Final da faixa(inclusive)
-Para a operação 5:
 
-3ª Entrada[int] - Posição do registro
-Neste exercício estamos tratando a 'faixa' e o 'registro específico' como posições relativas dentro do arquivo binário, ou seja: 1º registro; 2º registro; ... 10º registro. O número USP não passa de um valor numérico armazenado, futuramente usaremos como chave primária. OBS: Caso o valor final da faixa supere o total de registros, exiba até o último disponível. O run.codes aceitará tanto um arquivo .zip contendo o Makefile quanto apenas o arquivo .c. Recomendo que usem o Makefile.
+# Saída esperada
+```sh
+-------------------------------
+USP number: 1
+Name: Raymond
+Surname: Adeline
+Course: Sistemas de informacao
+Test grade: 2.00
+-------------------------------
+-------------------------------
+USP number: 2
+Name: Jeanne
+Surname: Alice
+Course: Ciencia da computacao
+Test grade: 6.00
+-------------------------------
+-------------------------------
+USP number: 3
+Name: Gregory
+Surname: Alicia
+Course: Engenharia da computacao
+Test grade: 0.00
+-------------------------------
+-------------------------------
+USP number: 4
+Name: Elizabeth
+Surname: Alla
+Course: Sistemas de informacao
+Test grade: 1.00
+-------------------------------
+-------------------------------
+USP number: 5
+Name: Carl
+Surname: Alma
+Course: Ciencia da computacao
+Test grade: 7.00
+-------------------------------
+```
+OBS: Registros que não exitem ou que já estão armazenados devem ser exibidos da seguinte forma:
+`NÂO VALE PRO DELETE. NESSE CASO NÂO EXIBA NADA`
+```sh
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+O Registro ja existe!
+Registro nao encontrado!
+Registro nao encontrado!
+Registro nao encontrado!
+Registro nao encontrado!
+Registro nao encontrado!
+-------------------------------
+USP number: 6
+Name: Amy
+Surname: Amy
+Course: Engenharia da computacao
+Test grade: 3.00
+-------------------------------
+```
+# Obrigações
+Você `deve`:
+- Comentar o código.
+- Usar alocações dinâmicas.
+- As seguintes funções são obrigatórias: ftell, fseek e fread.
+- Salvar os dados em um arquivo binário e depois lê-lo.
+- Ler apenas o que será escrito na saída padrão.
+- Fechar o arquivo ao final
 
-Saída esperada
-nUSP: 1
-Nome: Winter Y. Hodges
-Curso: Engenharia da Computacao
-Nota: 5.00
+# Dicas
+- Usem struct para organizar as informações do registro.
+- Modularizem o código em várias funções pequenas.
+- Deem nomes significativos para as variáveis
+- Após escreverem um registro utilizem o fflush para escrever o buffer, contido na struct FILE, para o disco.
 
-nUSP: 2
-Nome: Doris S. Mathis
-Curso: Sistemas de Informacao
-Nota: 5.00
-
-nUSP: 3
-Nome: Vernon U. Dunlap
-Curso: Sistemas de Informacao
-Nota: 0.00
-OBS: Não há pulo de linha para o último registro exbido
-
-Obrigações
-Você deve:
-
-Comentar o código. Não é pra escrever um romance. É COMENTÁRIO
-Usar alocações dinâmica. Fazer tudo na pilha é uma péssima prática de programação
-As seguintes funções são obrigatórias: ftell, fseek e fread.
-Ler apenas o que será escrito na saída padrão
-Fechar o arquivo ao final
-Dicas
-Usem struct para organizar as informações do registro.
-Não tentem ler os registros como struct, leiam cada campo do registro separadamente.
-Modularizem o código em várias funções pequenas.
-Deem nomes significativos para as variáveis
+# Duvidas
+Mandem no grupo, por email, ou combinem um dia de atendimento comigo!
+Bom exercício. Se cuidem!!!
