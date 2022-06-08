@@ -1,9 +1,13 @@
 Esse exercício consiste na leitura de um arquivo binário e exibição de seu conteúdo na saída padrão.
-
-Por que um arquivo binário? R: Observe abaixo duas possibilidades de representação de um número inteiro. A primeira consiste em uma cadeia de caracteres em texto puro ASCII, cada caractere consome 1 byte. A segunda, por sua vez, está no formato de um número inteiro 'int' na linguagem C, seu tamanho é 4 bytes em uma arquitetura X86 64 bits. O tamanho final em bytes está calculado após o número.
-
+--
+Por que um arquivo binário?
+R: Observe abaixo duas possibilidades de representação de um número inteiro. A primeira consiste em uma cadeia de caracteres em texto puro ASCII, cada caractere consome 1 byte. 
+A segunda, por sua vez, está no formato de um número inteiro 'int' na linguagem C, seu tamanho é 4 bytes em uma arquitetura X86 64 bits. 
+O tamanho final em bytes está calculado após o número.
+--
 "78765234" - 8 bytes
 78765234 - 4 bytes
+
 Organização interna do arquivo binário
 Cada registro dentro do arquivo contém os seguintes dados:
 
@@ -11,21 +15,26 @@ Numero USP - int
 Nome completo - char[50]
 Curso - char[50]
 Nota - float
-Seguindo a ordem anterior os registros estão dispostos da seguinte forma: [[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]] Sendo assim, os registros são de tamanho fixo com campos de tamanho fixo. OBS: Os colchetes não existem no arquivo, serve apenas para demarcar onde começam e terminam os registros e os campos
+Seguindo a ordem anterior os registros estão dispostos da seguinte forma:
+[[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]][[Numero USP][Nome][Curso][Nota]] 
+
+Sendo assim, os registros são de tamanho fixo com campos de tamanho fixo. 
+OBS: Os colchetes não existem no arquivo, serve apenas para demarcar onde começam e terminam os registros e os campos
 
 Entradas do exercício
 Você receberá entradas diferentes para cada caso de teste, use a forma que achar melhor para lê-las. Todas virão pela entrada padrão. As dispostas abaixo nunca mudarão para qualquer operação.
 
 1ª Entrada[string] - Nome do arquivo binário
 2ª Entrada[int] - Operação
-As operações são:
+  ## As operações são:
 
 1 - Exibição de todos os registros
 2 - Exibição de metade dos registros, do começo ao meio
 3 - Exibição de metade dos registros, do meio ao fim
 4 - Exibição de uma faixa de registros
 5 - Exibição de um registro específico
-Para a operação 4, após o número da operação, você deverá ler os valores:
+
+  Para a operação 4, após o número da operação, você deverá ler os valores:
 
 3ª Entrada[int] - Início da faixa(inclusive) - Posição do Registro no Arquivo
 4ª Entrada[int] - Final da faixa(inclusive) - Posição do Registro no Arquivo
